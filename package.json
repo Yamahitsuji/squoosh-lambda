@@ -1,0 +1,25 @@
+{
+  "name": "squoosh-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "build": "esbuild index.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=dist/index.js",
+    "postbuild": "cp node_modules/@squoosh/lib/build/*.wasm dist && cd dist && zip -r index.zip index.js* *.wasm"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.102",
+    "@types/node": "^18.7.11",
+    "esbuild": "^0.15.5",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.154.0",
+    "@squoosh/lib": "^0.4.0"
+  }
+}
